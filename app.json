@@ -1,0 +1,18 @@
+{
+    "id": "49363b24-2609-4894-b6b1-dba19cb7fa2f",
+    "version": "0.0.1",
+    "requiredApiVersion": "^1.19.0",
+    "iconFile": "icon.png",
+    "author": {
+        "name": "Duda Nogueira",
+        "homepage": "http://github.com/dudanogueira",
+        "support": "http://github.com/dudanogueira"
+    },
+    "name": "Message Reporter",
+    "nameSlug": "message-reporter",
+    "classFile": "ReporterApp.ts",
+    "description": "Analyze and Manage Reported Users and Messages",
+    "implements": [
+        "IPostMessageReported"
+    ]
+}
