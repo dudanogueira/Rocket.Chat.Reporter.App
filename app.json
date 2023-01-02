@@ -8,8 +8,8 @@
         "homepage": "http://github.com/dudanogueira",
         "support": "http://github.com/dudanogueira"
     },
-    "name": "Message Reporter",
-    "nameSlug": "message-reporter",
+    "name": "Reporter",
+    "nameSlug": "reporter",
     "classFile": "ReporterApp.ts",
     "description": "Analyze and Manage Reported Users and Messages",
     "implements": [

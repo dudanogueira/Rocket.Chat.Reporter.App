@@ -1,3 +1,4 @@
 {
-    "MessageReporter_OutputChannel": "Where the reported messages should be reported?"
+    "Reporter_OutputChannel": "What channel the reported incidents should be reported?",
+    "Reporter_OutputChannel_Desc": "Eg. general"
 }

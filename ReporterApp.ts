@@ -61,17 +61,22 @@ export class MessageReporterApp extends App implements IPostMessageReported {
         context,
         context.message.sender.id
       );
-      const uniqueChannels = [...new Set(report_records.map(item => item.room))].join(",");
+      const uniqueChannels = [...new Set(report_records.map(item => `\`#${item.room}\``))].join(" ");
       const user_report_count = report_records.length
       // send context message to room
       const messageStructure = modify.getCreator().startMessage();
+      if(context.message.room.type == "d"){
+        var reported_room = "a DIRECT"
+      }else{
+        var reported_room = "channel #" + context.message.room.slugifiedName
+      }
       // main message
-      let message = `Message ${context.message.id} from @${context.message.sender.username} was reported at channel #${context.message.room.displayName} and reason \`${context.reason}\` by user @${context.user.username}`;
+      let message = `*${context.message.sender.username}* was reported at ${reported_room} by user *${context.user.username}* \n*Reason:* \`${context.reason}\``;
       messageStructure
         .setRoom(room)
         .setText(message)
-        .setUsernameAlias("MESSAGE REPORTED!"); // set room
-      //messageStructure.setThreadId(context.message.sender.id)
+        .setUsernameAlias("MESSAGE REPORTED!");
+      // define used urls
       const Site_Url = await read
         .getEnvironmentReader()
         .getServerSettings()
@@ -79,11 +84,10 @@ export class MessageReporterApp extends App implements IPostMessageReported {
       // // define user urls
       const reported_user_avatar = urlJoin(Site_Url, "avatar", context.message.sender.username);
       const reported_user_edit = urlJoin(Site_Url, "/admin/users/info/", context.message.sender.id);
-
-      // add attachment infos
+      // add attachment info
       messageStructure.addAttachment({
         title: {
-          value: "Report informations",
+          value: "Report information",
         },
         text: context.message.text,
         collapsed: true,
@@ -95,9 +99,20 @@ export class MessageReporterApp extends App implements IPostMessageReported {
         fields: [
           {
             short: false,
-            title: `Reports from @${context.message.sender.username} so far:`,
-            value: `${user_report_count} reports at channels \`${uniqueChannels}\``,
+            title: `Reports from this user so far:`,
+            value: `\`${user_report_count} reports\` at channels ${uniqueChannels}`,
           },
+          {
+            short: true,
+            title: "User Created at",
+            value: context.message.sender.createdAt.toUTCString(),
+          },
+          {
+            short: true,
+            title: "Last Login",
+            value: context.message.sender.lastLoginAt.toUTCString(),
+          }
+
           // {
           //   short: true,
           //   title: "Channel",
