@@ -4,6 +4,10 @@ Analyze and Manage Reported Users and Messages
 ## Getting Started
 - Install this app at your Rocket.Chat workspace
 - Configure the channel where reported messages should go. On the below examples, we configured to `report-abuse`
+- If you want to add `@all` (notify all users) or `@here` (notify only active users), bear in mind that the **reporter.bot** (user automatically created when installing this app) must be owner or moderator on the configure Output Channel.
+
+![image](https://user-images.githubusercontent.com/1761174/210281625-d2fddb77-3f76-4b6f-9c6f-8f5f8e23b63d.png)
+
 
 ## How it Works
 When someone reports a message, it will get into the configured channel:
