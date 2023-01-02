@@ -42,7 +42,6 @@ export class ReportPersistence {
         } catch (err) {
             console.warn(err);
         }
-
         return result;
     }
 

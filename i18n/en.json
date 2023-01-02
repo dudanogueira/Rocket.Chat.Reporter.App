@@ -1,4 +1,9 @@
 {
-    "Reporter_OutputChannel": "What channel the reported incidents should be reported?",
-    "Reporter_OutputChannel_Desc": "Eg. general"
+    "Reporter_OutputChannel": "Output Channel",
+    "Reporter_OutputChannel_Desc": "What channel the reported incidents should be reported? Eg. general",
+    "Reporter_Notify_All": "Add @all to report message",
+    "Reporter_Notify_All_Desc": "reporter.bot user must be owner or moderator of the output channel",
+    "Reporter_Notify_Here": "Add @here to report message",
+    "Reporter_Notify_Here_Desc": "reporter.bot user must be owner or moderator of the output channel"
+    
 }
